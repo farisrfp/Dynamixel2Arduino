@@ -886,6 +886,32 @@ bool Dynamixel2Arduino::writeControlTableItem(uint8_t item_idx, uint8_t id, int3
   return ret;
 }
 
+bool Dynamixel2Arduino::writeControlTableItemXL(uint8_t item_idx, uint8_t id, int32_t data, uint32_t timeout, uint16_t model_num)
+{
+  bool ret = false;
+
+  if(model_num != UNREGISTERED_MODEL){
+    ret = writeControlTableItem(model_num, item_idx, id, data, timeout);
+  }else{
+    setLastLibErrCode(D2A_LIB_ERROR_UNKNOWN_MODEL_NUMBER);
+  }
+
+  return ret;
+}
+
+bool Dynamixel2Arduino::writeControlTableItemMX(uint8_t item_idx, uint8_t id, int32_t data, uint32_t timeout, uint16_t model_num)
+{
+  bool ret = false;
+
+  if(model_num != UNREGISTERED_MODEL){
+    ret = writeControlTableItem(model_num, item_idx, id, data, timeout);
+  }else{
+    setLastLibErrCode(D2A_LIB_ERROR_UNKNOWN_MODEL_NUMBER);
+  }
+
+  return ret;
+}
+
 
 
 
